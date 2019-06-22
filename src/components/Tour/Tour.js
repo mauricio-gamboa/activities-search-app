@@ -35,6 +35,7 @@ function Tour(props) {
                 <span
                     className='title'
                     dangerouslySetInnerHTML={{ __html: title }} />
+                {'.'}
             </div>
             <Rating rating={rating} />
         </div>

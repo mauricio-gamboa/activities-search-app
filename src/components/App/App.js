@@ -19,6 +19,7 @@ import { FAVORITE_TOURS_KEY } from '../../constants';
 // Components
 import Search from '../Search/Search'
 import ToursList from '../ToursList/ToursList';
+import Subtitle from '../Subtitle/Subtitle';
 
 function App() {
     const [tours, setTours] = useState([]);
@@ -87,11 +88,7 @@ function App() {
 
             {matchedTours && matchedTours.length > 0 &&
                 <div>
-                    <h2 className='subtitle'>
-                        <i className='fas fa-list'></i>
-                        {' '}
-                        Search results
-                    </h2>
+                    <Subtitle icon='fa-list'>Search results</Subtitle>
                     <ToursList
                         toggleFavorites={addToFavorites}
                         tours={matchedTours} />
@@ -100,11 +97,7 @@ function App() {
 
             {favoriteTours && favoriteTours.length > 0 &&
                 <div>
-                    <h2 className='subtitle'>
-                        <i className='fas fa-thumbs-up'></i>
-                        {' '}
-                        Favorite tours
-                    </h2>
+                    <Subtitle icon='fa-thumbs-up'>Favorite tours</Subtitle>
                     <ToursList
                         toggleFavorites={removeFromFavorites}
                         tours={favoriteTours} />
