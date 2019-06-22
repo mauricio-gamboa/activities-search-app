@@ -24,7 +24,7 @@ import Subtitle from '../Subtitle/Subtitle';
 function App() {
     const [tours, setTours] = useState([]);
     const [matchedTours, setMatchedTours] = useState([]);
-    const [favoriteTours, setFavoriteTours] = useState(getStorage(FAVORITE_TOURS_KEY));
+    const [favoriteTours, setFavoriteTours] = useState(() => getStorage(FAVORITE_TOURS_KEY));
 
     // This effect gets the tours from the JSON.
     useEffect(() => {
