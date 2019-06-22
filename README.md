@@ -1,6 +1,6 @@
 # Activities Search App! (Optimized for mobile)
 
-Important! Please install the node module before running the scripts `npm start`;
+Important! Please install the node modules with `npm start` before running the scripts.
 
 ## Available Scripts
 
