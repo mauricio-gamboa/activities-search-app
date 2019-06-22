@@ -25,6 +25,7 @@ function App() {
     const [matchedTours, setMatchedTours] = useState([]);
     const [favoriteTours, setFavoriteTours] = useState(getStorage(FAVORITE_TOURS_KEY));
 
+    // This effect gets the tours from the JSON.
     useEffect(() => {
         const fetchTours = async () => {
             const data = await getActivities();
@@ -34,6 +35,7 @@ function App() {
         fetchTours();
     }, []);
 
+    // This effect saves the favorite tours in session storage.
     useEffect(() => {
         setStorage(FAVORITE_TOURS_KEY, favoriteTours);
     }, [favoriteTours]);
@@ -75,7 +77,7 @@ function App() {
         }
 
         setMatchedTours(tours);
-    }
+    };
 
     return (
         <div className='app'>
