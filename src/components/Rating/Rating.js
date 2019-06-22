@@ -9,6 +9,10 @@ function Rating(props) {
     } = props;
 
     const getRatingStars = rating => {
+        if (!rating) {
+            return null;
+        }
+
         const int = Math.trunc(rating * 1);
         const hasDecimal = rating.includes('.');
         const ratingComponent = [];
