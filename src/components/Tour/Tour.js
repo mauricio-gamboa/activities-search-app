@@ -30,7 +30,7 @@ function Tour(props) {
             <div className='price'>{`${currency}${price}`}</div>
             <div>
                 {isSpecialOffer &&
-                    <span><i class='fas fa-tags'></i>{' '}</span>
+                    <span><i className='fas fa-tags'></i>{' '}</span>
                 }
                 <span
                     className='title'
