@@ -6,6 +6,16 @@ import './App.scss';
 // Services
 import getActivities from '../../services/activities';
 
+// Utils
+import {
+    setStorage,
+    getStorage
+} from '../../utils/store';
+
+// Constants
+
+import { FAVORITE_TOURS_KEY } from '../../constants';
+
 // Components
 import Search from '../Search/Search'
 import ToursList from '../ToursList/ToursList';
@@ -13,30 +23,28 @@ import ToursList from '../ToursList/ToursList';
 function App() {
     const [tours, setTours] = useState([]);
     const [matchedTours, setMatchedTours] = useState([]);
-    const [favoriteTours, setFavoriteTours] = useState([]);
+    const [favoriteTours, setFavoriteTours] = useState(getStorage(FAVORITE_TOURS_KEY));
 
     useEffect(() => {
         const fetchTours = async () => {
             const data = await getActivities();
-            const tours = data.tours;
-
-            // adds and in to the tours
-            for (let i = 0; i < tours.length; i++) {
-                tours[i].id = i;
-            }
-
-            setTours(tours);
+            setTours(data.tours);
         };
 
         fetchTours();
     }, []);
 
+    useEffect(() => {
+        setStorage(FAVORITE_TOURS_KEY, favoriteTours);
+    }, [favoriteTours]);
+
     const addToFavorites = id => {
         const index = matchedTours.findIndex(tour => tour.id === id);
 
         if (index !== -1) {
-            const favorites = [...favoriteTours, matchedTours[index]];
-            setFavoriteTours(favorites);
+            const newFavorite = Object.assign({}, matchedTours[index]);
+            newFavorite.isFavorited = true;
+            setFavoriteTours([...favoriteTours, newFavorite]);
 
             const updatedTours = [...matchedTours];
             updatedTours.splice(index, 1);
@@ -45,16 +53,37 @@ function App() {
     };
 
     const removeFromFavorites = id => {
+        const index = favoriteTours.findIndex(tour => tour.id === id);
 
+        if (index !== -1) {
+            const updatedTours = [...favoriteTours];
+            updatedTours.splice(index, 1);
+            setFavoriteTours(updatedTours);
+        }
     };
+
+    const cleanAndSetMatchedTours = filteredTours => {
+        const tours = []
+
+        // Exclude the favorited ones
+        for (let i = 0; i < filteredTours.length; i++) {
+            const index = favoriteTours.findIndex(tour => tour.id === filteredTours[i].id);
+
+            if (index === -1) {
+                tours.push(filteredTours[i]);
+            }
+        }
+
+        setMatchedTours(tours);
+    }
 
     return (
         <div className='app'>
             <Search
                 tours={tours}
-                onChange={setMatchedTours} />
+                onChange={cleanAndSetMatchedTours} />
 
-            {matchedTours.length > 0 &&
+            {matchedTours && matchedTours.length > 0 &&
                 <div>
                     <h2>Search results:</h2>
                     <ToursList
@@ -63,7 +92,7 @@ function App() {
                 </div>
             }
 
-            {favoriteTours.length > 0 &&
+            {favoriteTours && favoriteTours.length > 0 &&
                 <div>
                     <h2>Favorite tours:</h2>
                     <ToursList

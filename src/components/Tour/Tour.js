@@ -15,12 +15,15 @@ function Tour(props) {
         rating,
         title,
         toggleFavorites,
-        id
+        id,
+        isFavorited
     } = props;
 
     return (
         <div className='tour'>
-            <FavoriteButton handleClick={() => toggleFavorites(id)} />
+            <FavoriteButton
+                isSelected={isFavorited}
+                handleClick={() => toggleFavorites(id)} />
             <div className='title' dangerouslySetInnerHTML={{ __html: title }} />
         </div>
     );
