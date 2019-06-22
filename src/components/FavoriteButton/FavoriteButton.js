@@ -6,7 +6,6 @@ import './FavoriteButton.scss';
 function FavoriteButton(props) {
     const {
         isSelected,
-        isDisabled,
         handleClick
     } = props;
 
@@ -14,7 +13,6 @@ function FavoriteButton(props) {
         <button
             className={`favoriteButton ${isSelected ? 'selected' : ''}`}
             type='button'
-            disabled={isDisabled}
             onClick={() => handleClick()}>
             <i className='fas fa-heart'></i>
         </button>
