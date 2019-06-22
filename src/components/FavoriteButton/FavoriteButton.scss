@@ -1,0 +1,15 @@
+.favoriteButton {
+    font-size: 16px;
+    &:hover {
+        color: #fa6b6b;
+    }
+    &.selected {
+        color: #fa6b6b;
+    }
+    &:disabled {
+        opacity: 0.5;
+        &:hover {
+            color: black;
+        }
+    }
+}

@@ -1,17 +1,28 @@
 import React from 'react';
 
-// Services
-import getActivities from '../../services/activities';
+// CSS
+import './Search.scss';
 
 function Search(props) {
     const {
+        tours,
         onChange
     } = props;
 
+    const handleChange = serchTearm => {
+        const filteredTours = tours.filter(tour => {
+            const titleLower = tour.title.toLowerCase();
+            const serchTearmLower = serchTearm.toLowerCase();
+            return serchTearm && titleLower.includes(serchTearmLower);
+        });
+
+        onChange(filteredTours);
+    };
+
     return (
-        <div>
+        <div className='search'>
             <input
-                onChange={e => onChange(e.target.value)}
+                onChange={e => handleChange(e.target.value)}
                 type='text'
                 name='term'
                 placeholder='What are you looking for?' />

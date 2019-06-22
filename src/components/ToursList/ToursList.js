@@ -5,15 +5,19 @@ import Tour from '../Tour/Tour';
 
 function ToursList(props) {
     const {
-        tours
+        tours,
+        toggleFavorites
     } = props;
 
     return (
         <ul>
-            {tours.length > 0 && tours
-                .map((tour, index) =>
-                    <li key={index}><Tour {...tour} /></li>)
-            }
+            {tours.length > 0 && tours.map((tour, index) => {
+                return (
+                    <li key={index}>
+                        <Tour toggleFavorites={toggleFavorites} {...tour} />
+                    </li>
+                );
+            })}
         </ul>
     );
 }

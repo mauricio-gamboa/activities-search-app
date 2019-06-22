@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(241, 242, 246);
+    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.app {
+    padding: 0 16px;
+    margin-top: 16px;
+}
