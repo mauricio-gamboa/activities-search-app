@@ -1,6 +1,8 @@
 body {
     background-color: rgb(241, 242, 246);
-    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 button {
@@ -15,4 +17,10 @@ button {
 .app {
     padding: 0 16px;
     margin-top: 16px;
+}
+
+.subtitle {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 1.5rem;
 }

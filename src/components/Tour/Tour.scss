@@ -6,10 +6,17 @@
     background-color: white;
     position: relative;
     font-size: 14px;
-    
     .favoriteButton {
         position: absolute;
         top: 8px;
+        right: 8px;
+    }
+    .price {
+        color: #132968;
+        font-size: 18px;
+        font-weight: 700;
+        position: absolute;
+        bottom: 8px;
         right: 8px;
     }
 }
