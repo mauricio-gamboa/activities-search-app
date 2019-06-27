@@ -12,7 +12,6 @@ For purposes of this take-home test, we provide you with a static JSON file cont
 * The app should be styled with proper UX and UI in mind
 * Use HTML, CSS and JavaScript
 * Use the tools, libraries or frameworks you think are appropriate. Please don't use code generators
-* Include brief documentation why you added certain product features and an explanation of your technology choice
 
 ### Not to worry:
 
