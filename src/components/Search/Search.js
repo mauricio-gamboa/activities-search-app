@@ -11,7 +11,7 @@ function Search(props) {
 
     const handleChange = serchTearm => {
         const filteredTours = tours.filter(tour => {
-            const titleLower = tour.title.toLowerCase();
+            const titleLower = tour.title.toLowerCase().replace(/ /g, '');
             const serchTearmLower = serchTearm.toLowerCase();
             return serchTearm && titleLower.includes(serchTearmLower);
         });
